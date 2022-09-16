@@ -29,7 +29,7 @@ public class PickupManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject newPickup = Instantiate(pickupPrefab);
-            newPickup.transform.position = new Vector3(Random.Range(1f, -2f), 0.37f);
+            newPickup.transform.position = new Vector3(Random.Range(0f,5f), 1f, Random.Range(0f, 5f));
         }
     }
 }

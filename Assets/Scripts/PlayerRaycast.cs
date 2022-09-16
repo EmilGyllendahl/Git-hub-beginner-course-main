@@ -10,6 +10,7 @@ public class PlayerRaycast : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) // If the input of  the physical pressed key is what is writeen in the ()
         {
             RaycastHit result; // if the raycast hits something show the result of it.
+
             bool thereWasHit = Physics.Raycast(transform.position, transform.forward, out result, Mathf.Infinity);
 
             Debug.DrawRay(transform.position, transform.forward * 50f, Color.red, 0.05f);
@@ -23,7 +24,7 @@ public class PlayerRaycast : MonoBehaviour
 
     private Color GetRandomColor()
     {
-        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), 1f);
+        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1f); 
         return color;
     }
 }

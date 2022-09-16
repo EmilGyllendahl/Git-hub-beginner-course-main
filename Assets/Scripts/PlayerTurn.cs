@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerTurn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private int playerIndex;
+
+    public void SetPlayerTurn(int index)
     {
-        
+        playerIndex = index;
     }
+    
+    public bool IsPlayerTurn()
+    {
+        return TurnManager.GetInstance().IsItPlayerTurn(playerIndex);
+    }
+    
 }
+

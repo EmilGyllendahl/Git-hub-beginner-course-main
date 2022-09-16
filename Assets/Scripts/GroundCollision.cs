@@ -24,7 +24,7 @@ public class GroundCollision : MonoBehaviour
 
 
         // skapar ny färg med slumpmässiga värden Range är för float värden
-        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         return color;
     }
 

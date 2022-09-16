@@ -8,11 +8,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private PlayerTurn playerTurn;
     [SerializeField] private Rigidbody characterBody;
     [SerializeField] private float speed = 2f; // How fast the object moves
-    [SerializeField] private int playerIndex;
+  
 
     void Update()
     {
-        if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex)) // When the turn manager gets the instance and checks which player it is with the playerindex.
+        if (playerTurn.IsPlayerTurn()) // When the turn manager gets the instance and checks which player it is with the playerindex.
 
 
         {

@@ -5,8 +5,15 @@ using UnityEngine;
 public class TurnManager : MonoBehaviour
 {
     private static TurnManager instance;
+    [SerializeField] private PlayerTurn playerOne; // Playerone
+    [SerializeField] private PlayerTurn playerTwo;
+    [SerializeField] private float timeBetweenTurns; // Time between turns taken.
+
 
     private int currentPlayerIndex; //  The variable for which of the players turn it is
+    private bool waitingForNextTurn;
+    private float turnDelay;
+
 
     private void Awake()
     {
@@ -14,18 +21,44 @@ public class TurnManager : MonoBehaviour
         {
             instance = null;
             currentPlayerIndex = 1; //  Then tWhen the turn starts Player 1 starts when the game starts/Awakes
+            playerOne.SetPlayerTurn(1);
+            playerTwo.SetPlayerTurn(2);
         }
         
     }
 
+    private void Update()
+    {
+        if (waitingForNextTurn)
+        {
+            turnDelay += Time.deltaTime;
+            if (turnDelay >= timeBetweenTurns)
+            {
+                turnDelay = 0;
+                waitingForNextTurn = false; // If the game is waiting for the next turn
+                ChangeTurn();
+            }
+        }
+    }
+
     public bool IsItPlayerTurn(int index) // Checks the index for the current player
     {
+        if (waitingForNextTurn) //
+        {
+            return false; 
+        }
+    
         return index == currentPlayerIndex; // Returns the index for the current player
     }
 
     public static TurnManager GetInstance() // The TurnManager checks the instance
     {
         return instance;
+    }
+
+    public void TriggerChangeTurn()
+    {
+        waitingForNextTurn = true;
     }
 
     public void ChangeTurn() 

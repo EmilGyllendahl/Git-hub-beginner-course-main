@@ -40,6 +40,6 @@ public class ProjecTile : MonoBehaviour
     {
         GameObject damageIndicator = Instantiate(damageIndicatorPrefab); // Start/activate the damage indicator on the game object.
         damageIndicator.transform.position = collision.GetContact(0).point; // where the contact of the collision is made, make damageindikator visible
-        TurnManager.GetInstance().ChangeTurn();
+
     }
 }
